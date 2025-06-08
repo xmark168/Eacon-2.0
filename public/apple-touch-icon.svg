@@ -1,0 +1,22 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient-apple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background rounded rectangle -->
+  <rect width="180" height="180" rx="40" fill="url(#bg-gradient-apple)"/>
+  
+  <!-- Sparkles icon scaled up -->
+  <g fill="white" stroke="white" stroke-width="2">
+    <!-- Main sparkle -->
+    <path d="M90 35L98 65L128 73L98 81L90 111L82 81L52 73L82 65L90 35Z"/>
+    
+    <!-- Small sparkles -->
+    <path d="M135 50L140 60L150 65L140 70L135 80L130 70L120 65L130 60L135 50Z"/>
+    <path d="M45 115L50 125L60 130L50 135L45 145L40 135L30 130L40 125L45 115Z"/>
+    <path d="M148 130L150 135L155 137L150 139L148 144L146 139L141 137L146 135L148 130Z"/>
+  </g>
+</svg> 
