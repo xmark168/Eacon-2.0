@@ -89,7 +89,7 @@ export default function PaymentPage() {
 
       if (result.success) {
         // Redirect to PayOS payment page
-        window.open(result.data.checkoutUrl, '_blank');
+        window.location.href = result.data.checkoutUrl;
       } else {
         alert('Failed to create payment. Please try again.');
       }
@@ -125,7 +125,7 @@ export default function PaymentPage() {
       const result = await response.json();
 
       if (result.success) {
-        window.open(result.data.checkoutUrl, '_blank');
+        window.location.href = result.data.checkoutUrl;
         setShowCustomModal(false);
       } else {
         alert('Failed to create payment. Please try again.');

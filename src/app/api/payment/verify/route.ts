@@ -223,22 +223,12 @@ const secureHandler = withSecurity(
               data: { tokens: { increment: expectedData.tokens } }
             });
 
-            // Update tracking transaction
+            // Update tracking transaction - ONLY update, don't create duplicate
             await tx.tokenTransaction.update({
               where: { id: existingTransaction.id },
               data: { 
                 amount: expectedData.tokens,
-                description: `${existingTransaction.description} - VERIFIED - PAID:${paymentInfo.amount}VND`
-              }
-            });
-
-            // Create final completion transaction
-            await tx.tokenTransaction.create({
-              data: {
-                userId: user.id,
-                amount: expectedData.tokens,
-                type: 'PURCHASED',
-                description: `Payment verified - orderCode:${orderCode} - ${expectedData.tokens} tokens - $${expectedData.amountUSD} USD`,
+                description: `Payment verified - orderCode:${orderCode} - ${expectedData.tokens} tokens - $${expectedData.amountUSD} USD - VERIFIED - PAID:${paymentInfo.amount}VND`
               }
             });
           });

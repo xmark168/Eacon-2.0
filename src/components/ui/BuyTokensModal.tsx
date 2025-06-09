@@ -123,21 +123,13 @@ export function BuyTokensModal({ isOpen, onClose, currentTokens }: BuyTokensModa
         setSuccess(`Payment created: ${result.calculation.tokens} tokens for $${result.calculation.amountUSD} USD`);
       }
 
-      // Security: Open payment in new window
-      const paymentWindow = window.open(
-        result.data.checkoutUrl, 
-        '_blank',
-        'noopener,noreferrer,width=800,height=600'
-      );
+      // Display success message then redirect
+      setSuccess(`Payment created: ${result.calculation.tokens} tokens for $${result.calculation.amountUSD} USD`);
 
-      if (!paymentWindow) {
-        throw new Error('Payment window blocked. Please allow popups and try again.');
-      }
-
-      // Auto-close after showing calculation
+      // Redirect to payment page
       setTimeout(() => {
-        onClose();
-      }, 3000);
+        window.location.href = result.data.checkoutUrl;
+      }, 1500);
 
     } catch (error: any) {
       console.error('🚨 Payment error:', error.message);
