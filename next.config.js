@@ -6,11 +6,7 @@ const nextConfig = {
       bodySizeLimit: '10mb',
     },
   },
-  api: {
-    bodyParser: {
-      sizeLimit: '10mb',
-    },
-  },
+
   images: {
     domains: ['images.unsplash.com', 'res.cloudinary.com', 'lh3.googleusercontent.com'],
     remotePatterns: [
