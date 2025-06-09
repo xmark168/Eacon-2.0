@@ -52,6 +52,7 @@ interface GenerationSettings {
 interface GenerationResult {
   success: boolean
   imageUrl?: string
+  imageUrls?: string[]
   prompt?: string
   caption?: string
   settings?: {
@@ -62,6 +63,13 @@ interface GenerationResult {
   generatedAt?: string
   newTokenBalance?: number
   tokenCost?: number
+  isTransformation?: boolean
+  isVariations?: boolean
+  tracking?: {
+    templateId?: string
+    suggestionId?: string
+    generationSource?: string
+  }
   error?: string
 }
 
@@ -475,12 +483,19 @@ function GeneratePageContent() {
       }
 
       if (data.success) {
-        setGeneratedImages([data.imageUrl ?? null])
+        // Handle different response types
+        if (data.imageUrls && data.isVariations) {
+          // Multiple images from variations
+          setGeneratedImages(data.imageUrls.filter(url => url !== null))
+        } else if (data.imageUrl) {
+          // Single image from generation or transformation
+          setGeneratedImages([data.imageUrl])
+        }
         
         // Update token balance from API response (tokens should be deducted on server side)
         if (data.newTokenBalance !== undefined) {
           setTokens(data.newTokenBalance)
-          console.log('💰 Token balance updated:', data.newTokenBalance)
+          console.log('💰 Token balance updated:', data.newTokenBalance, 'tokens used:', data.tokenCost)
         } else {
           // Fallback: refresh token balance from API
           try {
@@ -488,6 +503,7 @@ function GeneratePageContent() {
             const tokenData = await tokenResponse.json()
             if (tokenData.success) {
               setTokens(tokenData.tokens)
+              console.log('💰 Token balance refreshed:', tokenData.tokens)
             }
           } catch (tokenError) {
             console.error('Error refreshing token balance:', tokenError)
@@ -529,6 +545,19 @@ function GeneratePageContent() {
       }
     } catch (err) {
       console.error('Generation error:', err)
+      
+      // If generation failed, refresh token balance to show correct amount
+      try {
+        const tokenResponse = await fetch('/api/users/tokens')
+        const tokenData = await tokenResponse.json()
+        if (tokenData.success) {
+          setTokens(tokenData.tokens)
+          console.log('💰 Token balance refreshed after error:', tokenData.tokens)
+        }
+      } catch (tokenError) {
+        console.error('Error refreshing token balance after error:', tokenError)
+      }
+      
       setError(err instanceof Error ? err.message : 'Failed to generate image')
     } finally {
       setIsGenerating(false)
@@ -912,13 +941,24 @@ function GeneratePageContent() {
 
       // Handle specific HTTP error codes before trying to parse JSON
       if (!response.ok) {
-                 if (response.status === 413) {
-           throw new Error('Image file is too large. Please choose a smaller image (maximum 8MB).')
-        } else if (response.status === 401) {
-          throw new Error('Authentication required. Please log in again.')
-        } else if (response.status === 400) {
-          throw new Error('Invalid image file. Please upload a valid JPG, PNG, or WebP image.')
+        // Try to get the actual error message from the response
+        let errorMessage = `Upload failed with status ${response.status}`
+        try {
+          const errorData = await response.json()
+          errorMessage = errorData.error || errorMessage
+        } catch {
+          // If JSON parsing fails, use the status-based message
+          if (response.status === 413) {
+            errorMessage = 'Image file is too large. Please choose a smaller image (maximum 8MB).'
+          } else if (response.status === 401) {
+            errorMessage = 'Authentication required. Please log in again.'
+          } else if (response.status === 400) {
+            errorMessage = 'Invalid image file. Please upload a valid JPG, PNG, or WebP image.'
+          } else if (response.status === 500) {
+            errorMessage = 'Server error occurred while processing the image. Please try again.'
+          }
         }
+        throw new Error(errorMessage)
       }
 
       let data
@@ -1047,6 +1087,27 @@ function GeneratePageContent() {
     const sizeOption = sizeOptions.find(option => option.value === settings.size)
     return sizeOption?.price || 25
   }
+
+  // Refresh token balance periodically to ensure accuracy
+  useEffect(() => {
+    const refreshTokens = async () => {
+      try {
+        const response = await fetch('/api/users/tokens')
+        const data = await response.json()
+        if (data.success && data.tokens !== tokens) {
+          setTokens(data.tokens)
+          console.log('🔄 Token balance auto-refreshed:', data.tokens)
+        }
+      } catch (error) {
+        console.error('Auto token refresh failed:', error)
+      }
+    }
+
+    // Refresh tokens every 30 seconds
+    const interval = setInterval(refreshTokens, 30000)
+    
+    return () => clearInterval(interval)
+  }, [tokens])
 
   // Add debug logging for button state
   useEffect(() => {
