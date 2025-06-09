@@ -42,9 +42,9 @@ export default function ImageAIDemo() {
       return
     }
 
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setError('File quá lớn. Vui lòng chọn ảnh nhỏ hơn 5MB')
+    // Validate file size (max 8MB)
+    if (file.size > 8 * 1024 * 1024) {
+      setError('File quá lớn. Vui lòng chọn ảnh nhỏ hơn 8MB')
       return
     }
 
@@ -64,7 +64,26 @@ export default function ImageAIDemo() {
             body: formData
           })
           
-          const uploadData = await uploadResponse.json()
+          // Handle specific HTTP error codes before trying to parse JSON
+          if (!uploadResponse.ok) {
+                         if (uploadResponse.status === 413) {
+               throw new Error('File ảnh quá lớn. Vui lòng chọn ảnh nhỏ hơn 8MB.')
+            } else if (uploadResponse.status === 401) {
+              throw new Error('Cần đăng nhập lại.')
+            } else if (uploadResponse.status === 400) {
+              throw new Error('File ảnh không hợp lệ. Vui lòng upload JPG, PNG, hoặc WebP.')
+            }
+          }
+          
+          let uploadData
+          try {
+            uploadData = await uploadResponse.json()
+          } catch (jsonError) {
+            // If JSON parsing fails, it might be an HTML error page
+            const textResponse = await uploadResponse.text()
+            console.error('Failed to parse JSON response:', textResponse)
+            throw new Error('Lỗi server: Không thể xử lý upload. Vui lòng thử lại.')
+          }
           
           if (uploadData.success) {
             setUploadedImageUrl(uploadData.imageUrl)
@@ -75,7 +94,7 @@ export default function ImageAIDemo() {
           }
         } catch (uploadError) {
           console.error('Upload error:', uploadError)
-          setError('Lỗi upload ảnh. Vui lòng thử lại.')
+          setError(uploadError instanceof Error ? uploadError.message : 'Lỗi upload ảnh. Vui lòng thử lại.')
         }
       }
     }

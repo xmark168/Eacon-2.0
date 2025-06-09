@@ -234,7 +234,7 @@ function ImageGenerator() {
 ## Lưu ý quan trọng
 
 1. **Environment Variables**: Cần thiết lập `OPENAI_API_KEY` trong `.env.local`
-2. **File Size**: Giới hạn file upload tối đa 5MB
+2. **File Size**: Giới hạn file upload tối đa 8MB
 3. **Rate Limits**: Tuân thủ rate limits của OpenAI API
 4. **Authentication**: Tất cả requests cần authentication
 5. **Error Handling**: Luôn kiểm tra response và xử lý errors appropriately

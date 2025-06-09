@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import PayOS from '@payos/node';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { withSecurity, auditLog } from '@/lib/security';
 import { prisma } from '@/lib/prisma';
 
 // Force dynamic rendering for authenticated routes
@@ -13,111 +12,161 @@ const payOS = new PayOS(
   process.env.PAYOS_CHECKSUM_KEY!
 );
 
-export async function POST(request: NextRequest) {
+// SECURITY: Same constants as payment creation
+const TOKEN_RATE = 200; // 200 tokens per 1 USD
+const VND_RATE = 26050; // 1 USD = 26,050 VND
+
+// Parse payment data from tracking description
+function parsePaymentData(description: string): {
+  amountUSD: number;
+  tokens: number;
+  amountVND: number;
+  orderCode: string;
+} | null {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session || !session.user?.id) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const usdMatch = description.match(/USD:(\d+)/);
+    const tokensMatch = description.match(/tokens:(\d+)/);
+    const vndMatch = description.match(/VND:(\d+)/);
+    const orderCodeMatch = description.match(/orderCode:(\d+)/);
+    
+    if (!usdMatch || !tokensMatch || !vndMatch || !orderCodeMatch) {
+      return null;
     }
+    
+    return {
+      amountUSD: parseInt(usdMatch[1]),
+      tokens: parseInt(tokensMatch[1]),
+      amountVND: parseInt(vndMatch[1]),
+      orderCode: orderCodeMatch[1]
+    };
+  } catch {
+    return null;
+  }
+}
 
-    const { orderCode } = await request.json();
+// Validate payment amounts match expected calculations
+function validatePaymentAmounts(
+  paidVND: number,
+  expectedUSD: number,
+  expectedTokens: number,
+  expectedVND: number
+): { valid: boolean; reason?: string } {
+  // Check if paid amount matches expected VND amount (allow small rounding differences)
+  const vndDifference = Math.abs(paidVND - expectedVND);
+  if (vndDifference > 100) { // Allow 100 VND difference for rounding
+    return {
+      valid: false,
+      reason: `Amount mismatch: paid ${paidVND} VND, expected ${expectedVND} VND`
+    };
+  }
+  
+  // Verify server-side calculation integrity
+  const calculatedTokens = expectedUSD * TOKEN_RATE;
+  const calculatedVND = expectedUSD * VND_RATE;
+  
+  if (calculatedTokens !== expectedTokens) {
+    return {
+      valid: false,
+      reason: `Token calculation mismatch: calculated ${calculatedTokens}, expected ${expectedTokens}`
+    };
+  }
+  
+  if (Math.abs(calculatedVND - expectedVND) > 100) {
+    return {
+      valid: false,
+      reason: `VND calculation mismatch: calculated ${calculatedVND}, expected ${expectedVND}`
+    };
+  }
+  
+  return { valid: true };
+}
 
-    if (!orderCode) {
-      return NextResponse.json(
-        { error: 'Order code is required' },
-        { status: 400 }
-      );
-    }
+// Main secure handler
+const secureHandler = withSecurity(
+  async (request: NextRequest, context: any) => {
+    const { user } = context;
 
-    // Verify payment with PayOS
-    const paymentInfo = await payOS.getPaymentLinkInformation(orderCode);
+    try {
+      const { orderCode } = await request.json();
 
-    if (paymentInfo.status === 'PAID') {
-      // Find payment record  
-      const payment = await (prisma as any).payment.findUnique({
-        where: { orderCode: orderCode.toString() },
-      });
-
-      if (!payment) {
+      if (!orderCode) {
+        await auditLog('PAYMENT_VERIFY_INVALID_INPUT', user.id, {
+          missing: 'orderCode'
+        }, request);
+        
         return NextResponse.json(
-          { error: 'Payment record not found' },
-          { status: 404 }
+          { error: 'Order code is required' },
+          { status: 400 }
         );
       }
 
-      // Check if payment already processed to prevent duplicate token addition
-      if (payment.status === 'PAID') {
-        console.log(`Payment ${payment.id} already processed with status: PAID`);
-        return NextResponse.json({
-          success: true,
-          status: 'PAID',
-          message: 'Payment already processed',
-          data: paymentInfo,
-        });
+      // Audit log verification attempt
+      await auditLog('PAYMENT_VERIFY_ATTEMPT', user.id, {
+        orderCode,
+        timestamp: Date.now()
+      }, request);
+
+      // Get payment info from PayOS
+      let paymentInfo;
+      try {
+        paymentInfo = await payOS.getPaymentLinkInformation(orderCode);
+      } catch (payosError: any) {
+        await auditLog('PAYMENT_VERIFY_PAYOS_ERROR', user.id, {
+          orderCode,
+          error: payosError.message
+        }, request);
+        
+        console.error('PayOS verification error:', payosError);
+        return NextResponse.json(
+          { error: 'Payment verification failed' },
+          { status: 500 }
+        );
       }
 
-      console.log(`Processing payment ${payment.id} with status: ${payment.status} for orderCode: ${payment.orderCode}`);
+      // Validate payment data
+      if (!paymentInfo || typeof paymentInfo !== 'object') {
+        await auditLog('PAYMENT_VERIFY_INVALID_RESPONSE', user.id, {
+          orderCode,
+          paymentInfo: typeof paymentInfo
+        }, request);
+        
+        return NextResponse.json(
+          { error: 'Invalid payment information' },
+          { status: 400 }
+        );
+      }
 
-      // Process tokens only if payment status is still PENDING
-      // Use atomic update with WHERE condition to prevent race conditions
-      try {
-        // Prepare user update data
-        const userUpdateData: any = {
-          tokens: { increment: payment.tokens },
-        };
-
-        // If payment includes account upgrade, update account type
-        if (payment.accountUpgrade) {
-          userUpdateData.accountType = payment.accountUpgrade;
-          // Set plan expiration for paid plans (30 days from now)
-          userUpdateData.planExpiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
-        }
-
-        // Use atomic transaction with conditional update to prevent race conditions
-        const result = await prisma.$transaction(async (tx) => {
-          // Try to update payment status atomically - only if still PENDING
-          const updatedPayment = await (tx as any).payment.updateMany({
-            where: { 
-              id: payment.id,
-              status: 'PENDING' // Critical: only update if still PENDING
-            },
-            data: { 
-              status: 'PAID',
-              payosData: paymentInfo,
-            },
-          });
-
-          // If no rows updated, payment was already processed
-          if (updatedPayment.count === 0) {
-            console.log(`⚠️ Payment ${payment.id} already processed - updateMany returned 0 rows`);
-            throw new Error('ALREADY_PROCESSED');
-          }
-
-          // Update user tokens
-          const updatedUser = await tx.user.update({
-            where: { id: session.user.id! },
-            data: userUpdateData,
-          });
-
-          // Create token transaction
-          const tokenTransaction = await tx.tokenTransaction.create({
-            data: {
-              userId: session.user.id!,
-              amount: payment.tokens,
-              type: 'PURCHASED',
-              description: `Purchased ${payment.packageType} package (verified) - orderCode:${payment.orderCode}`,
-            },
-          });
-
-          return { updatedUser, tokenTransaction };
+      // Check if payment was successful
+      if (paymentInfo.status === 'PAID') {
+        // Find payment tracking record
+        const existingTransaction = await prisma.tokenTransaction.findFirst({
+          where: {
+            userId: user.id,
+            description: {
+              contains: `orderCode:${orderCode}`
+            }
+          },
+          orderBy: { createdAt: 'desc' }
         });
 
-        console.log(`✅ Payment verified and processed: ${payment.tokens} tokens added to user ${session.user.id}`);
+        if (!existingTransaction) {
+          await auditLog('PAYMENT_VERIFY_NO_RECORD', user.id, {
+            orderCode
+          }, request);
+          
+          return NextResponse.json(
+            { error: 'Payment record not found' },
+            { status: 404 }
+          );
+        }
 
-      } catch (error) {
-        // If payment was already processed, return success anyway
-        if (error instanceof Error && error.message === 'ALREADY_PROCESSED') {
-          console.log(`⚠️ Payment ${payment.id} already processed by webhook or concurrent request`);
+        // Check if already processed
+        if (existingTransaction.amount > 0) {
+          await auditLog('PAYMENT_VERIFY_ALREADY_PROCESSED', user.id, {
+            orderCode,
+            transactionId: existingTransaction.id
+          }, request);
+          
           return NextResponse.json({
             success: true,
             status: 'PAID',
@@ -125,30 +174,139 @@ export async function POST(request: NextRequest) {
             data: paymentInfo,
           });
         }
+
+        // Parse expected payment data from tracking
+        const expectedData = parsePaymentData(existingTransaction.description || '');
+        if (!expectedData) {
+          await auditLog('PAYMENT_VERIFY_PARSE_ERROR', user.id, {
+            orderCode,
+            description: existingTransaction.description
+          }, request);
+          
+          return NextResponse.json(
+            { error: 'Unable to parse payment data' },
+            { status: 400 }
+          );
+        }
+
+        // SECURITY: Validate actual paid amount against expected
+        const validation = validatePaymentAmounts(
+          paymentInfo.amount || 0,
+          expectedData.amountUSD,
+          expectedData.tokens,
+          expectedData.amountVND
+        );
+
+        if (!validation.valid) {
+          await auditLog('PAYMENT_VERIFY_AMOUNT_MISMATCH', user.id, {
+            orderCode,
+            paidAmount: paymentInfo.amount,
+            expectedAmount: expectedData.amountVND,
+            reason: validation.reason,
+            suspiciousActivity: true
+          }, request);
+          
+          return NextResponse.json(
+            { error: `Payment amount verification failed: ${validation.reason}` },
+            { status: 400 }
+          );
+        }
+
+        console.log(`🔒 PAYMENT VERIFIED: User paid ${paymentInfo.amount} VND for ${expectedData.tokens} tokens`);
+
+        // Process payment atomically
+        try {
+          await prisma.$transaction(async (tx) => {
+            // Update user tokens with verified amount
+            await tx.user.update({
+              where: { id: user.id },
+              data: { tokens: { increment: expectedData.tokens } }
+            });
+
+            // Update tracking transaction
+            await tx.tokenTransaction.update({
+              where: { id: existingTransaction.id },
+              data: { 
+                amount: expectedData.tokens,
+                description: `${existingTransaction.description} - VERIFIED - PAID:${paymentInfo.amount}VND`
+              }
+            });
+
+            // Create final completion transaction
+            await tx.tokenTransaction.create({
+              data: {
+                userId: user.id,
+                amount: expectedData.tokens,
+                type: 'PURCHASED',
+                description: `Payment verified - orderCode:${orderCode} - ${expectedData.tokens} tokens - $${expectedData.amountUSD} USD`,
+              }
+            });
+          });
+
+          // Audit log successful verification
+          await auditLog('PAYMENT_VERIFY_SUCCESS', user.id, {
+            orderCode,
+            tokenAmount: expectedData.tokens,
+            amountUSD: expectedData.amountUSD,
+            paidVND: paymentInfo.amount,
+            verificationSecure: true
+          }, request);
+
+          console.log(`✅ Payment verified: ${expectedData.tokens} tokens added to user ${user.id}`);
+
+          return NextResponse.json({
+            success: true,
+            status: 'PAID',
+            tokensAdded: expectedData.tokens,
+            amountUSD: expectedData.amountUSD,
+            paidVND: paymentInfo.amount,
+            rate: `${TOKEN_RATE} tokens per $1 USD`,
+            data: paymentInfo,
+          });
+
+        } catch (dbError: any) {
+          await auditLog('PAYMENT_VERIFY_DB_ERROR', user.id, {
+            orderCode,
+            error: dbError.message
+          }, request);
+          
+          console.error('Database error during payment verification:', dbError);
+          throw new Error('Failed to process payment');
+        }
+
+      } else {
+        // Payment not successful
+        await auditLog('PAYMENT_VERIFY_NOT_PAID', user.id, {
+          orderCode,
+          status: paymentInfo.status
+        }, request);
         
-        console.error(`❌ Payment processing error for ${payment.id}:`, error);
-        throw error;
+        return NextResponse.json({
+          success: false,
+          status: paymentInfo.status,
+          data: paymentInfo,
+        });
       }
-      
-      return NextResponse.json({
-        success: true,
-        status: 'PAID',
-        data: paymentInfo,
-      });
 
-    } else {
-      return NextResponse.json({
-        success: false,
-        status: paymentInfo.status,
-        data: paymentInfo,
-      });
+    } catch (error: any) {
+      // Audit log error
+      await auditLog('PAYMENT_VERIFY_ERROR', user.id, {
+        error: error.message,
+        stack: error.stack?.substring(0, 500)
+      }, request);
+
+      console.error('Payment verification error:', error);
+      return NextResponse.json(
+        { error: 'Failed to verify payment' },
+        { status: 500 }
+      );
     }
-
-  } catch (error) {
-    console.error('PayOS payment verification error:', error);
-    return NextResponse.json(
-      { error: 'Failed to verify payment' },
-      { status: 500 }
-    );
+  },
+  {
+    requireAuth: true,
+    rateLimit: 'PAYMENT',
+    allowedMethods: ['POST']
   }
-}
+);
+
+export const POST = secureHandler;

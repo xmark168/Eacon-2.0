@@ -864,9 +864,9 @@ function GeneratePageContent() {
       return
     }
 
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setError('Please upload an image smaller than 5MB')
+    // Validate file size (max 8MB)
+    if (file.size > 8 * 1024 * 1024) {
+      setError('Please upload an image smaller than 8MB')
       return
     }
 
@@ -910,7 +910,27 @@ function GeneratePageContent() {
         body: formData
       })
 
-      const data = await response.json()
+      // Handle specific HTTP error codes before trying to parse JSON
+      if (!response.ok) {
+                 if (response.status === 413) {
+           throw new Error('Image file is too large. Please choose a smaller image (maximum 8MB).')
+        } else if (response.status === 401) {
+          throw new Error('Authentication required. Please log in again.')
+        } else if (response.status === 400) {
+          throw new Error('Invalid image file. Please upload a valid JPG, PNG, or WebP image.')
+        }
+      }
+
+      let data
+      try {
+        data = await response.json()
+      } catch (jsonError) {
+        // If JSON parsing fails, it might be an HTML error page
+        const textResponse = await response.text()
+        console.error('Failed to parse JSON response:', textResponse)
+        throw new Error('Server error: Unable to process upload request. Please try again.')
+      }
+
       console.log('📤 Upload response:', data)
 
       if (data.success) {
@@ -1374,7 +1394,7 @@ function GeneratePageContent() {
                       <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                       <div className="space-y-2">
                         <p className="text-gray-600">Upload an image to transform</p>
-                        <p className="text-sm text-gray-500">JPG, PNG or WebP • Max 5MB</p>
+                        <p className="text-sm text-gray-500">JPG, PNG or WebP • Max 8MB</p>
                       </div>
                       
                       <label className="mt-4 inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 cursor-pointer transition-colors">

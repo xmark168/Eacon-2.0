@@ -8,6 +8,9 @@ import sharp from 'sharp'
 // Force dynamic rendering for authenticated routes
 export const dynamic = 'force-dynamic'
 
+// Increase the maximum allowed request body size to 10MB
+export const maxDuration = 60 // 60 seconds timeout for uploads
+
 // Valid dimensions for Stability AI SDXL models
 const VALID_DIMENSIONS = [
   { width: 1024, height: 1024 },
@@ -103,8 +106,19 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const formData = await request.formData()
-    const file = formData.get('image') as File
+    let formData: FormData
+    let file: File
+    
+    try {
+      formData = await request.formData()
+      file = formData.get('image') as File
+    } catch (parseError) {
+      console.error('Failed to parse form data:', parseError)
+      return NextResponse.json(
+        { error: 'Request too large or malformed. Please ensure your image is smaller than 8MB.' },
+        { status: 413 }
+      )
+    }
     
     if (!file) {
       return NextResponse.json(
@@ -122,11 +136,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
+    // Validate file size (max 8MB to account for processing)
+    if (file.size > 8 * 1024 * 1024) {
       return NextResponse.json(
-        { error: 'File too large. Please upload an image smaller than 5MB' },
-        { status: 400 }
+        { error: 'File too large. Please upload an image smaller than 8MB' },
+        { status: 413 }
       )
     }
 
