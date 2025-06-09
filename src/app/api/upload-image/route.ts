@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-import { writeFile, mkdir } from 'fs/promises'
+import { writeFile, mkdir, access } from 'fs/promises'
 import path from 'path'
 import sharp from 'sharp'
 
@@ -82,6 +82,16 @@ async function resizeImageForStability(buffer: Buffer): Promise<Buffer> {
   }
 }
 
+// Helper function to check if directory exists
+async function ensureDirectoryExists(dirPath: string) {
+  try {
+    await access(dirPath)
+  } catch {
+    // Directory doesn't exist, create it
+    await mkdir(dirPath, { recursive: true })
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions)
@@ -122,9 +132,7 @@ export async function POST(request: NextRequest) {
 
     // Create uploads directory if it doesn't exist
     const uploadDir = path.join(process.cwd(), 'public', 'uploads')
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true })
-    }
+    await ensureDirectoryExists(uploadDir)
 
     // Convert file to buffer
     const bytes = await file.arrayBuffer()
@@ -146,8 +154,8 @@ export async function POST(request: NextRequest) {
 
     const filePath = path.join(uploadDir, fileName)
 
-    // Save processed image
-    fs.writeFileSync(filePath, processedBuffer)
+    // Save processed image using async writeFile
+    await writeFile(filePath, processedBuffer)
 
     const imageUrl = `/uploads/${fileName}`
 

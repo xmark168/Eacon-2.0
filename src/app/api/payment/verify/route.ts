@@ -4,6 +4,9 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
+// Force dynamic rendering for authenticated routes
+export const dynamic = 'force-dynamic'
+
 const payOS = new PayOS(
   process.env.PAYOS_CLIENT_ID!,
   process.env.PAYOS_API_KEY!,
@@ -148,4 +151,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}

@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { updateImage, deleteImage, toggleImageFavorite, getImageById } from '@/lib/database'
+import { prisma } from '@/lib/prisma'
+
+// Force dynamic rendering for authenticated routes
+export const dynamic = 'force-dynamic'
 
 export async function GET(
   request: NextRequest,
