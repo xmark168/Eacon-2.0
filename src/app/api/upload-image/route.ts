@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-import fs from 'fs'
+import { writeFile, mkdir } from 'fs/promises'
 import path from 'path'
 import sharp from 'sharp'
+
+// Force dynamic rendering for authenticated routes
+export const dynamic = 'force-dynamic'
 
 // Valid dimensions for Stability AI SDXL models
 const VALID_DIMENSIONS = [

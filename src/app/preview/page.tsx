@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { useSession } from 'next-auth/react'
 import { redirect, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
@@ -25,18 +25,32 @@ import {
   Clock,
   ChevronDown,
   Calendar,
-  X
+  X,
+  Loader
 } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
-export default function PreviewPage() {
+// Loading component for Suspense fallback
+function PreviewLoading() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="flex items-center gap-2">
+        <Loader className="h-5 w-5 animate-spin text-indigo-600" />
+        <span>Loading preview...</span>
+      </div>
+    </div>
+  )
+}
+
+// Rename the main component
+function PreviewPageContent() {
   const { data: session, status } = useSession()
-  const searchParams = useSearchParams()
   const [liked, setLiked] = useState(false)
   const [saved, setSaved] = useState(false)
   const [activeTab, setActiveTab] = useState('instagram')
   const [aiReview, setAiReview] = useState<any>(null)
-  const [tokens, setTokens] = useState(90)
+  const [tokens, setTokens] = useState<number>(0)
   const [isGeneratingReview, setIsGeneratingReview] = useState(false)
   const [showPostDropdown, setShowPostDropdown] = useState(false)
   const [showScheduleModal, setShowScheduleModal] = useState(false)
@@ -57,6 +71,7 @@ export default function PreviewPage() {
   } | null>(null)
 
   // Get parameters from URL
+  const searchParams = useSearchParams()
   const imageUrl = searchParams.get('image') || ''
   const urlPrompt = searchParams.get('prompt') || ''
   const urlCaption = searchParams.get('caption') || ''
@@ -120,7 +135,7 @@ export default function PreviewPage() {
     const actualImageId = imageId || getImageIdFromUrl(imageUrl)
     
     if (needsDataFromDatabase && actualImageId) {
-      console.log('🔄 Loading image data from database (missing URL params):', {
+      console.log('�� Loading image data from database (missing URL params):', {
         imageId: actualImageId,
         hasUrlPrompt: !!urlPrompt,
         hasUrlCaption: !!urlCaption
@@ -1115,5 +1130,14 @@ export default function PreviewPage() {
         </div>
       )}
     </div>
+  )
+}
+
+// Export wrapped in Suspense
+export default function PreviewPage() {
+  return (
+    <Suspense fallback={<PreviewLoading />}>
+      <PreviewPageContent />
+    </Suspense>
   )
 } 

@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import OpenAI from 'openai'
 
+// Force dynamic rendering for authenticated routes
+export const dynamic = 'force-dynamic'
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })

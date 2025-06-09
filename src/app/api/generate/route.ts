@@ -365,6 +365,9 @@ async function createVariationsWithOpenAI(sourceImageUrl: string): Promise<strin
   }
 }
 
+// Force dynamic rendering for authenticated routes
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions)

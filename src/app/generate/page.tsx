@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, Suspense } from 'react'
 import { useSession } from 'next-auth/react'
 import { redirect, useSearchParams, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -27,7 +27,15 @@ import {
   Edit3,
   Lock,
   Unlock,
-  HeartHandshake
+  HeartHandshake,
+  Loader,
+  ChevronDown,
+  ChevronUp,
+  Info,
+  MessageCircle,
+  Bookmark,
+  MoreHorizontal,
+  Check
 } from 'lucide-react'
 import Link from 'next/link'
 import ImageCropper from '@/components/ImageCropper'
@@ -62,8 +70,22 @@ interface ImageForCropping {
   previewUrl: string
 }
 
-export default function GeneratePage() {
+// Loading component for Suspense fallback
+function GenerateLoading() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="flex items-center gap-2">
+        <Loader className="h-5 w-5 animate-spin text-indigo-600" />
+        <span>Loading generator...</span>
+      </div>
+    </div>
+  )
+}
+
+// Main Generate component that uses useSearchParams
+function GeneratePageContent() {
   const { data: session, status } = useSession()
+  const router = useRouter()
   const searchParams = useSearchParams()
   const [prompt, setPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
@@ -1748,4 +1770,15 @@ export default function GeneratePage() {
       />
     </div>
   )
-} 
+}
+
+// Wrap the Generate component in Suspense
+const GeneratePage = () => {
+  return (
+    <Suspense fallback={<GenerateLoading />}>
+      <GeneratePageContent />
+    </Suspense>
+  )
+}
+
+export default GeneratePage 

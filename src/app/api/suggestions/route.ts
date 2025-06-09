@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { getAllTemplates } from '@/lib/database'
 
+// Force dynamic rendering for authenticated routes
+export const dynamic = 'force-dynamic'
+
 interface ContentSuggestion {
   id: string
   title: string

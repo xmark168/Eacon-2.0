@@ -5,10 +5,14 @@ import { saveImage, getUserImages, SavedImage } from '@/lib/database'
 import OpenAI from 'openai'
 import fs from 'fs/promises'
 import path from 'path'
+import { prisma } from '@/lib/prisma'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
+
+// Force dynamic rendering for authenticated routes
+export const dynamic = 'force-dynamic'
 
 // Function to ensure uploads directory exists
 async function ensureUploadsDir() {
