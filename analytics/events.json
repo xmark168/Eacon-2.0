@@ -943,5 +943,29 @@
     "referrer": "",
     "ip": "::1",
     "serverTimestamp": "2025-07-07T19:49:33.164Z"
+  },
+  {
+    "sessionId": "084aa25c-1598-4f38-84b2-20fddc61834a",
+    "userId": "cmbnax7mx00002piwvyuwqkw7",
+    "eventType": "page_view",
+    "page": "/admin/templates",
+    "value": "Eacon - AI-Powered Social Media Content Creator",
+    "timestamp": 1751917788515,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+    "referrer": "",
+    "ip": "::1",
+    "serverTimestamp": "2025-07-07T19:49:48.530Z"
+  },
+  {
+    "sessionId": "0f6e09f5-b089-463f-9ff1-db6d913ca404",
+    "userId": "cmbnax7mx00002piwvyuwqkw7",
+    "eventType": "page_view",
+    "page": "/templates",
+    "value": "Eacon - AI-Powered Social Media Content Creator",
+    "timestamp": 1751917788655,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+    "referrer": "",
+    "ip": "::1",
+    "serverTimestamp": "2025-07-07T19:49:48.669Z"
   }
 ]
