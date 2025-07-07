@@ -43,6 +43,10 @@ export interface Template {
   isActive: boolean
   type?: 'GENERATE' | 'TRANSFORM'
   requiresUpload?: boolean
+  // Thêm trường ảnh preview
+  previewImage?: string
+  usageCount?: number
+  unlockCount?: number
   createdAt: Date
   updatedAt: Date
 }

@@ -1,0 +1,24 @@
+[
+  {
+    "sessionId": "3dbe4a6a-9623-49da-a7cb-d658da1c4b07",
+    "eventType": "page_view",
+    "page": "/admin/templates",
+    "value": "Eacon - AI-Powered Social Media Content Creator",
+    "timestamp": 1751857388079,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+    "referrer": "http://localhost:3000/admin/login",
+    "ip": "::1",
+    "serverTimestamp": "2025-07-07T03:03:08.380Z"
+  },
+  {
+    "sessionId": "3dbe4a6a-9623-49da-a7cb-d658da1c4b07",
+    "eventType": "page_view",
+    "page": "/admin/templates",
+    "value": "Eacon - AI-Powered Social Media Content Creator",
+    "timestamp": 1751857392679,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+    "referrer": "http://localhost:3000/admin/login",
+    "ip": "::1",
+    "serverTimestamp": "2025-07-07T03:03:12.706Z"
+  }
+]

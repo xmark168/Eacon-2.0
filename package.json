@@ -23,10 +23,11 @@
     "@payos/node": "^1.0.10",
     "@prisma/client": "^5.22.0",
     "@types/nodemailer": "^6.4.17",
+    "@types/uuid": "^10.0.0",
     "bcryptjs": "^2.4.3",
     "date-fns": "^4.1.0",
     "form-data": "^4.0.3",
-    "framer-motion": "^11.11.17",
+    "framer-motion": "^11.18.2",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.454.0",
     "next": "14.2.18",
@@ -42,6 +43,7 @@
     "react-image-crop": "^11.0.10",
     "sharp": "^0.33.5",
     "stripe": "^17.3.1",
+    "uuid": "^11.1.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

@@ -77,6 +77,14 @@ model Template {
   type            TemplateType     @default(GENERATE)
   requiresUpload  Boolean          @default(false)
   isActive        Boolean          @default(true)
+  
+  // Thêm trường ảnh preview
+  previewImage    String?          // URL ảnh preview
+  
+  // Thêm thống kê sử dụng
+  usageCount      Int              @default(0)  // Số lần được sử dụng
+  unlockCount     Int              @default(0)  // Số lần được unlock
+  
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
   generatedImages GeneratedImage[]

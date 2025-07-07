@@ -1,0 +1,23 @@
+{
+  "name": "template-quality-checker",
+  "version": "1.0.0",
+  "description": "Tool để kiểm tra và cập nhật chất lượng templates transform",
+  "main": "template-quality-checker.js",
+  "scripts": {
+    "start": "node template-quality-checker.js",
+    "check": "node template-quality-checker.js"
+  },
+  "dependencies": {
+    "pg": "^8.11.3"
+  },
+  "keywords": [
+    "postgresql",
+    "template",
+    "quality",
+    "checker",
+    "ai",
+    "transform"
+  ],
+  "author": "Eacon Team",
+  "license": "MIT"
+} 

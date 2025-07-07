@@ -238,7 +238,26 @@ export default function TemplatesPage() {
               >
                 {/* Template Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300">
+                  {(template as any).previewImage ? (
+                    <img 
+                      src={(template as any).previewImage}
+                      alt={template.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        // Fallback to gradient background if image fails
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          const fallback = parent.querySelector('.fallback-bg') as HTMLElement;
+                          if (fallback) fallback.style.display = 'flex';
+                        }
+                      }}
+                    />
+                  ) : null}
+                  <div 
+                    className={`fallback-bg absolute inset-0 w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 items-center justify-center group-hover:from-blue-200 group-hover:to-purple-200 transition-colors duration-300 ${(template as any).previewImage ? 'hidden' : 'flex'}`}
+                  >
                     <div className="text-center">
                       <Sparkles className="h-12 w-12 text-blue-500 mx-auto mb-2" />
                       <p className="text-sm text-blue-600 font-medium">{template.category}</p>
