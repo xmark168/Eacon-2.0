@@ -52,6 +52,8 @@ export default function TemplatesPage() {
       if (data.success) {
         setTemplates(data.templates)
         console.log('📚 Templates loaded from database:', data.templates.length)
+        console.log('🖼️ First template preview image:', data.templates[0]?.previewImage)
+        console.log('🔍 Sample template data:', data.templates[0])
       } else {
         throw new Error(data.error || 'Failed to fetch templates')
       }

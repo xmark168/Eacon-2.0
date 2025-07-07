@@ -518,6 +518,9 @@ export async function getTemplateById(templateId: string): Promise<Template | nu
       isActive: template.isActive,
       type: template.type,
       requiresUpload: template.requiresUpload,
+      previewImage: template.previewImage,
+      usageCount: template.usageCount,
+      unlockCount: template.unlockCount,
       createdAt: template.createdAt,
       updatedAt: template.updatedAt
     }
@@ -548,6 +551,9 @@ export async function getAllTemplates(): Promise<Template[]> {
       isActive: template.isActive,
       type: template.type,
       requiresUpload: template.requiresUpload,
+      previewImage: template.previewImage,
+      usageCount: template.usageCount,
+      unlockCount: template.unlockCount,
       createdAt: template.createdAt,
       updatedAt: template.updatedAt
     }))

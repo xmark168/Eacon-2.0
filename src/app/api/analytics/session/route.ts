@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 const TRACKING_DIR = path.join(process.cwd(), 'analytics');
 const SESSIONS_FILE = path.join(TRACKING_DIR, 'sessions.json');
 
@@ -30,12 +33,17 @@ export async function POST(request: NextRequest) {
       endTime: new Date().toISOString()
     };
 
-    // Đọc sessions hiện tại
+    // Đọc sessions hiện tại với error handling tốt hơn
     let sessions = [];
     try {
       const existingData = await fs.readFile(SESSIONS_FILE, 'utf-8');
       sessions = JSON.parse(existingData);
-    } catch {
+      if (!Array.isArray(sessions)) {
+        sessions = [];
+      }
+    } catch (error) {
+      // File chưa tồn tại hoặc lỗi format, tạo mới
+      console.log('Creating new sessions file or recovering from error:', error.message);
       sessions = [];
     }
 
@@ -55,12 +63,19 @@ export async function POST(request: NextRequest) {
       sessions = sessions.slice(-5000);
     }
 
-    // Lưu lại file
-    await fs.writeFile(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
+    // Lưu lại file với error handling
+    try {
+      await fs.writeFile(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
+      console.log('📊 Session tracked:', sessionData.sessionId?.substring(0, 8));
+    } catch (writeError) {
+      console.error('Failed to write sessions file:', writeError);
+      // Không throw error để không crash app
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Session tracking error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    // Luôn return success để không crash app khi analytics lỗi
+    return NextResponse.json({ success: true });
   }
 } 

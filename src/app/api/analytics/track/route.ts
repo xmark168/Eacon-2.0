@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 // Lưu tracking data vào file JSON thay vì database
 const TRACKING_DIR = path.join(process.cwd(), 'analytics');
 const EVENTS_FILE = path.join(TRACKING_DIR, 'events.json');
@@ -64,13 +67,17 @@ export async function POST(request: NextRequest) {
       serverTimestamp: new Date().toISOString()
     };
 
-    // Đọc events hiện tại
+    // Đọc events hiện tại với error handling tốt hơn
     let events = [];
     try {
       const existingData = await fs.readFile(EVENTS_FILE, 'utf-8');
       events = JSON.parse(existingData);
-    } catch {
-      // File chưa tồn tại hoặc rỗng
+      if (!Array.isArray(events)) {
+        events = [];
+      }
+    } catch (error) {
+      // File chưa tồn tại hoặc lỗi format, tạo mới
+      console.log('Creating new events file or recovering from error:', error.message);
       events = [];
     }
 
@@ -82,12 +89,19 @@ export async function POST(request: NextRequest) {
       events = events.slice(-10000);
     }
 
-    // Lưu lại file
-    await fs.writeFile(EVENTS_FILE, JSON.stringify(events, null, 2));
+    // Lưu lại file với error handling
+    try {
+      await fs.writeFile(EVENTS_FILE, JSON.stringify(events, null, 2));
+      console.log('📊 Event tracked:', event.eventType, event.page);
+    } catch (writeError) {
+      console.error('Failed to write events file:', writeError);
+      // Không throw error để không crash app
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Analytics tracking error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    // Luôn return success để không crash app khi analytics lỗi
+    return NextResponse.json({ success: true });
   }
 } 
