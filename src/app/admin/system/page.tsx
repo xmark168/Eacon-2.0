@@ -436,7 +436,7 @@ export default function AdminSystem() {
                     value={config.tokenPricing.tokens5000}
                     onChange={(e) => updateNestedConfig('tokenPricing', 'tokens5000', parseInt(e.target.value))}
                     className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                    placeholder="500000"
+                    placeholder="130000"
                   />
                   <p className="text-xs text-gray-400 mt-1">{config.tokenPricing.tokens5000.toLocaleString('vi-VN')} ₫</p>
                 </div>
@@ -450,7 +450,7 @@ export default function AdminSystem() {
                     value={config.tokenPricing.tokens10000}
                     onChange={(e) => updateNestedConfig('tokenPricing', 'tokens10000', parseInt(e.target.value))}
                     className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                    placeholder="950000"
+                    placeholder="260000"
                   />
                   <p className="text-xs text-gray-400 mt-1">{config.tokenPricing.tokens10000.toLocaleString('vi-VN')} ₫</p>
                 </div>
@@ -464,7 +464,7 @@ export default function AdminSystem() {
                     value={config.tokenPricing.tokens20000}
                     onChange={(e) => updateNestedConfig('tokenPricing', 'tokens20000', parseInt(e.target.value))}
                     className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                    placeholder="1800000"
+                    placeholder="520000"
                   />
                   <p className="text-xs text-gray-400 mt-1">{config.tokenPricing.tokens20000.toLocaleString('vi-VN')} ₫</p>
                 </div>

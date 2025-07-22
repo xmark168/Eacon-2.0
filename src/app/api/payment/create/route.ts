@@ -13,8 +13,8 @@ const payOS = new PayOS(
 );
 
 // SECURITY: Server-side token calculation only
-const TOKEN_RATE = 200; // 200 tokens per 1 USD - FIXED RATE
-const VND_RATE = 26050; // 1 USD = 26,050 VND - FIXED RATE
+const TOKEN_RATE = 400; // 400 tokens per 1 USD - FIXED RATE
+const VND_RATE = 26000; // 1 USD = 26,000 VND - FIXED RATE
 
 // Calculate tokens from USD amount - SERVER SIDE ONLY
 function calculateTokensFromUSD(amountUSD: number): number {

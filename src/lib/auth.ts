@@ -1,6 +1,7 @@
 import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import FacebookProvider from 'next-auth/providers/facebook'
 import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 
@@ -9,6 +10,15 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID!,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          scope: 'public_profile,email,publish_to_groups,pages_show_list,pages_manage_posts,pages_read_engagement'
+        }
+      }
     }),
     CredentialsProvider({
       name: 'credentials',
@@ -64,26 +74,32 @@ export const authOptions: NextAuthOptions = {
       if (account) {
         token.provider = account.provider
         token.providerAccountId = account.providerAccountId
+        // Lưu access token Facebook vào token
+        if (account.provider === 'facebook') {
+          token.facebookAccessToken = account.access_token
+        }
       }
       return token
     },
     async session({ session, token }) {
       if (token && token.id) {
         session.user.id = token.id as string
-        
         // Fetch user data including tokens
         try {
           const user = await prisma.user.findUnique({
             where: { id: token.id as string },
             select: { tokens: true }
           })
-          
           if (user) {
             session.user.tokens = user.tokens
           }
         } catch (error) {
           console.error('Session fetch error:', error)
         }
+      }
+      // Đưa access token Facebook vào session
+      if (token.facebookAccessToken) {
+        session.facebookAccessToken = token.facebookAccessToken
       }
       return session
     },
@@ -182,6 +198,91 @@ export const authOptions: NextAuthOptions = {
           }
         } catch (error) {
           console.error('Google sign-in error:', error)
+          return false
+        }
+      }
+      if (account?.provider === 'facebook') {
+        try {
+          const existingUser = await prisma.user.findUnique({
+            where: { email: user.email! }
+          })
+          if (existingUser) {
+            user.id = existingUser.id
+            // Update user info with latest from Facebook
+            await prisma.user.update({
+              where: { id: existingUser.id },
+              data: {
+                name: user.name || existingUser.name,
+                image: user.image || existingUser.image,
+              }
+            })
+            // Check if Facebook social connection exists
+            const existingConnection = await prisma.socialConnection.findFirst({
+              where: {
+                userId: existingUser.id,
+                platform: 'FACEBOOK',
+                platformId: account.providerAccountId || ''
+              }
+            })
+            if (!existingConnection) {
+              await prisma.socialConnection.create({
+                data: {
+                  userId: existingUser.id,
+                  platform: 'FACEBOOK',
+                  platformId: account.providerAccountId || '',
+                  accessToken: account.access_token || '',
+                  refreshToken: account.refresh_token || null,
+                  expiresAt: account.expires_at ? new Date(account.expires_at * 1000) : null,
+                  isActive: true
+                }
+              })
+              console.log('✅ Facebook social connection created for existing user')
+            } else {
+              await prisma.socialConnection.update({
+                where: { id: existingConnection.id },
+                data: {
+                  accessToken: account.access_token || '',
+                  refreshToken: account.refresh_token || null,
+                  expiresAt: account.expires_at ? new Date(account.expires_at * 1000) : null,
+                  isActive: true
+                }
+              })
+              console.log('✅ Facebook social connection updated for existing user')
+            }
+          } else {
+            // Create new user with Facebook account
+            const newUser = await prisma.user.create({
+              data: {
+                email: user.email!,
+                name: user.name || '',
+                image: user.image,
+                tokens: 100, // Welcome bonus for new Facebook users
+              }
+            })
+            user.id = newUser.id
+            await prisma.socialConnection.create({
+              data: {
+                userId: newUser.id,
+                platform: 'FACEBOOK',
+                platformId: account.providerAccountId || '',
+                accessToken: account.access_token || '',
+                refreshToken: account.refresh_token || null,
+                expiresAt: account.expires_at ? new Date(account.expires_at * 1000) : null,
+                isActive: true
+              }
+            })
+            await prisma.tokenTransaction.create({
+              data: {
+                userId: newUser.id,
+                amount: 100,
+                type: 'EARNED',
+                description: 'Welcome bonus for Facebook signup'
+              }
+            })
+            console.log('✅ New user created with Facebook account and welcome bonus')
+          }
+        } catch (error) {
+          console.error('Facebook sign-in error:', error)
           return false
         }
       }

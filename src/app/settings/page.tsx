@@ -704,6 +704,15 @@ export default function SettingsPage() {
                         </div>
                       )
                     })}
+                    {/* Add Facebook connection button */}
+                    <div className="flex items-center gap-3 mt-4">
+                      <span>Facebook:</span>
+                      {session?.facebookAccessToken ? (
+                        <span className="text-green-600 font-semibold">Đã kết nối</span>
+                      ) : (
+                        <button onClick={() => signIn('facebook')} className="bg-blue-600 text-white px-3 py-1 rounded">Kết nối Facebook</button>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}

@@ -357,9 +357,9 @@
     ],
     "referrer": "",
     "isBot": false,
-    "duration": 63743886,
-    "serverTimestamp": "2025-07-07T20:31:56.831Z",
-    "endTime": "2025-07-07T20:31:56.831Z"
+    "duration": 222985969,
+    "serverTimestamp": "2025-07-09T16:45:58.914Z",
+    "endTime": "2025-07-09T16:45:58.914Z"
   },
   {
     "sessionId": "084aa25c-1598-4f38-84b2-20fddc61834a",
@@ -1299,9 +1299,9 @@
     ],
     "referrer": "",
     "isBot": false,
-    "duration": 3956194,
-    "serverTimestamp": "2025-07-07T20:31:56.822Z",
-    "endTime": "2025-07-07T20:31:56.822Z"
+    "duration": 4449429,
+    "serverTimestamp": "2025-07-07T20:40:10.055Z",
+    "endTime": "2025-07-07T20:40:10.055Z"
   },
   {
     "sessionId": "0f6e09f5-b089-463f-9ff1-db6d913ca404",
@@ -1371,8 +1371,772 @@
     ],
     "referrer": "",
     "isBot": false,
-    "duration": 2580014,
-    "serverTimestamp": "2025-07-07T20:32:31.091Z",
-    "endTime": "2025-07-07T20:32:31.091Z"
+    "duration": 3038970,
+    "serverTimestamp": "2025-07-07T20:40:10.060Z",
+    "endTime": "2025-07-07T20:40:10.060Z"
+  },
+  {
+    "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+    "startTime": 1753150529865,
+    "pageViews": 31,
+    "events": [
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753150529936,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753150529943,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753150531555,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753150531615,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "button-Buy More Tokens",
+        "timestamp": 1753150532780,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "button-Hide Custom Amount",
+        "timestamp": 1753150550590,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753150578934,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753150579792,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151418195,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151420023,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151425644,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151693121,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "button-$5",
+        "timestamp": 1753151695423,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151698359,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151698363,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151698735,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151698841,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "button-Buy More Tokens",
+        "timestamp": 1753151700303,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "button-Hide Custom Amount",
+        "timestamp": 1753151705071,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151725457,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151764500,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151774926,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151775986,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151870788,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151872282,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151872286,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151873064,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151873189,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "button-Hide Custom Amount",
+        "timestamp": 1753151875728,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "nav-Sign out",
+        "timestamp": 1753151886920,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151888106,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/dashboard"
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151888109,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/dashboard"
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151888209,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/dashboard"
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753151892258,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/dashboard"
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156652053,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/dashboard"
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156652068,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/dashboard"
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156704140,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/dashboard"
+      },
+      {
+        "sessionId": "68e01772-0864-4737-a9d8-2f071bbfad3d",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156713456,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/dashboard"
+      }
+    ],
+    "referrer": "",
+    "isBot": false,
+    "duration": 6389400,
+    "serverTimestamp": "2025-07-22T04:01:59.290Z",
+    "endTime": "2025-07-22T04:01:59.290Z"
+  },
+  {
+    "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+    "startTime": 1753156637075,
+    "pageViews": 25,
+    "events": [
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156637114,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156637119,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156638119,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/",
+        "element": "link-/login",
+        "timestamp": 1753156639464,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156640063,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/login",
+        "element": "button-Sign in",
+        "timestamp": 1753156643589,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156644075,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156644882,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "link-/settings",
+        "timestamp": 1753156646860,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/settings",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156647607,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/settings",
+        "element": "nav-Social Accounts",
+        "timestamp": 1753156649194,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/settings",
+        "element": "button-inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200 disabled:opacity-50",
+        "timestamp": 1753156650369,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/settings",
+        "element": "button-Kết nối Facebook",
+        "timestamp": 1753156651391,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156651945,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156651948,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156651997,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156652020,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156682159,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156687990,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156690641,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156695507,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156698415,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156704068,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/login",
+        "element": "button-Sign in",
+        "timestamp": 1753156707726,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156708095,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": "http://localhost:3000/settings"
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156713324,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156713325,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156713386,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156713413,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/login",
+        "element": "button-Sign in",
+        "timestamp": 1753156717497,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/login",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156717940,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/dashboard",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156718130,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/dashboard",
+        "element": "link-/settings",
+        "timestamp": 1753156721971,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "page_view",
+        "page": "/settings",
+        "value": "Eacon - AI-Powered Social Media Content Creator",
+        "timestamp": 1753156722038,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/settings",
+        "element": "button-Social Accounts",
+        "timestamp": 1753156723981,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      },
+      {
+        "sessionId": "22bcec8e-d72a-42ae-abdd-2fb0f2a395c7",
+        "userId": "cmbnax7mx00002piwvyuwqkw7",
+        "eventType": "click",
+        "page": "/settings",
+        "element": "button-Kết nối Facebook",
+        "timestamp": 1753156724755,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "referrer": ""
+      }
+    ],
+    "referrer": "",
+    "isBot": false,
+    "duration": 87750,
+    "serverTimestamp": "2025-07-22T03:58:44.852Z",
+    "endTime": "2025-07-22T03:58:44.852Z"
   }
 ]

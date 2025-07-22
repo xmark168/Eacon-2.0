@@ -13,7 +13,7 @@ const payOS = new PayOS(
 );
 
 // SECURITY: Same constants as payment creation
-const TOKEN_RATE = 200; // 200 tokens per 1 USD
+const TOKEN_RATE = 400; // 400 tokens per 1 USD
 const VND_RATE = 26050; // 1 USD = 26,050 VND
 
 // Parse payment data from tracking description

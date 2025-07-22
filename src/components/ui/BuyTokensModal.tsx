@@ -13,32 +13,32 @@ const TOKEN_PACKAGES = [
     name: 'Starter Pack',
     amountUSD: 5,
     popular: false,
-    description: 'Perfect for trying out our AI features',
-    features: ['1,000 tokens', '~33 images', 'Basic support']
+    description: 'Phù hợp để trải nghiệm AI',
+    features: ['2,000 tokens', '~66 ảnh', 'Hỗ trợ cơ bản']
   },
   {
     id: 'creator',
     name: 'Creator Pack',
     amountUSD: 12,
     popular: true,
-    description: 'Great for content creators',
-    features: ['2,400 tokens', '~80 images', 'Priority support']
+    description: 'Tốt cho nhà sáng tạo nội dung',
+    features: ['4,800 tokens', '~160 ảnh', 'Hỗ trợ ưu tiên']
   },
   {
     id: 'professional',
     name: 'Professional Pack',
     amountUSD: 25,
     popular: false,
-    description: 'For professional use cases',
-    features: ['5,000 tokens', '~167 images', 'VIP support']
+    description: 'Dành cho nhu cầu chuyên nghiệp',
+    features: ['10,000 tokens', '~333 ảnh', 'Hỗ trợ VIP']
   },
   {
     id: 'enterprise',
     name: 'Enterprise Pack',
     amountUSD: 50,
     popular: false,
-    description: 'Maximum value for heavy users',
-    features: ['10,000 tokens', '~333 images', '24/7 support']
+    description: 'Tối đa giá trị cho người dùng lớn',
+    features: ['20,000 tokens', '~666 ảnh', 'Hỗ trợ 24/7']
   }
 ];
 
@@ -140,8 +140,8 @@ export function BuyTokensModal({ isOpen, onClose, currentTokens }: BuyTokensModa
   };
 
   // Calculate preview tokens (client-side display only)
-  const getPreviewTokens = (amountUSD: number) => amountUSD * 200;
-  const getPreviewVND = (amountUSD: number) => amountUSD * 26050;
+  const getPreviewTokens = (amountUSD: number) => amountUSD * 400;
+  const getPreviewVND = (amountUSD: number) => amountUSD * 26000;
 
   if (!isOpen) return null;
 
@@ -160,7 +160,6 @@ export function BuyTokensModal({ isOpen, onClose, currentTokens }: BuyTokensModa
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">Buy Tokens</h2>
                 <p className="text-gray-600">Current balance: {currentTokens.toLocaleString()} tokens</p>
-                <p className="text-sm text-purple-600">🔒 Secure server-side calculation: 200 tokens = $1 USD</p>
               </div>
               <button
                 onClick={onClose}
@@ -349,7 +348,6 @@ export function BuyTokensModal({ isOpen, onClose, currentTokens }: BuyTokensModa
                 Security & Payment Information
               </h4>
               <div className="text-sm text-blue-800 space-y-1">
-                <p>• 🔒 <strong>Secure server-side calculation:</strong> 200 tokens = $1 USD (fixed rate)</p>
                 <p>• ✅ All payments securely processed by PayOS</p>
                 <p>• 🏦 Supports Vietnamese bank cards, international cards, QR codes, e-wallets</p>
                 <p>• ⚡ Tokens added instantly after payment verification</p>

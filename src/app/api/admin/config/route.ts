@@ -29,9 +29,9 @@ const defaultConfig: SystemConfig = {
   registrationEnabled: true,
   maxFileSize: 8,
   tokenPricing: {
-    tokens5000: 500000,
-    tokens10000: 950000,
-    tokens20000: 1800000
+    tokens5000: 130000,
+    tokens10000: 260000,
+    tokens20000: 520000
   }
 };
 

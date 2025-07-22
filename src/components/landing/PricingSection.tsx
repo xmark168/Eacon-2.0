@@ -9,51 +9,51 @@ const plans = [
     price: 'Free',
     tokens: '100',
     images: '3-4',
-    description: 'Perfect for getting started',
+    description: 'Phù hợp cho người mới bắt đầu',
     features: [
-      '100 free tokens',
-      'Basic templates',
-      'Standard quality generation',
-      'Basic editing tools',
-      'Community support'
+      '100 tokens miễn phí',
+      'Mẫu cơ bản',
+      'Chất lượng tiêu chuẩn',
+      'Công cụ chỉnh sửa cơ bản',
+      'Hỗ trợ cộng đồng'
     ],
-    cta: 'Get Started',
+    cta: 'Bắt đầu',
     popular: false,
     icon: Sparkles
   },
   {
     name: 'Creator',
     price: '$9',
-    tokens: '3,000',
-    images: '~100',
-    description: 'For content creators',
+    tokens: '3,600',
+    images: '~120',
+    description: 'Dành cho nhà sáng tạo nội dung',
     features: [
-      '3,000 tokens monthly',
-      'All premium templates',
-      'High-quality generation',
-      'Advanced editing suite',
-      'Social scheduling',
-      'Priority support'
+      '3,600 tokens/tháng',
+      'Tất cả mẫu cao cấp',
+      'Chất lượng cao',
+      'Bộ công cụ chỉnh sửa nâng cao',
+      'Lên lịch đăng bài',
+      'Hỗ trợ ưu tiên'
     ],
-    cta: 'Upgrade Now',
+    cta: 'Nâng cấp',
     popular: true,
     icon: Crown
   },
   {
     name: 'Pro',
     price: '$24',
-    tokens: '8,000',
-    images: '~280',
-    description: 'For businesses and agencies',
+    tokens: '9,600',
+    images: '~320',
+    description: 'Cho doanh nghiệp và agency',
     features: [
-      '8,000 tokens monthly',
-      'All premium templates',
-      'Ultra-high quality',
-      'Team collaboration',
-      'Priority processing',
-      'Analytics dashboard',
-      'API access',
-      'Dedicated support'
+      '9,600 tokens/tháng',
+      'Tất cả mẫu cao cấp',
+      'Chất lượng siêu cao',
+      'Làm việc nhóm',
+      'Xử lý ưu tiên',
+      'Báo cáo phân tích',
+      'API riêng',
+      'Hỗ trợ riêng'
     ],
     cta: 'Go Pro',
     popular: false,
@@ -184,7 +184,7 @@ export function PricingSection() {
                 </h3>
                 <div className="space-y-2 text-sm">
                   <div className="bg-primary-50 rounded-lg p-4">
-                    <div className="font-bold text-primary-900 text-lg">$1.20 per 1,000 tokens</div>
+                    <div className="font-bold text-primary-900 text-lg">$2.5 cho 1,000 tokens</div>
                     <div className="text-primary-700">Purchase additional tokens anytime</div>
                     <div className="text-primary-600 text-xs mt-1">No expiration • Add to any plan</div>
                   </div>

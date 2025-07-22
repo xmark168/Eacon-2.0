@@ -117,7 +117,7 @@ async function main() {
     })
   }
 
-  // 50 Premium Viral Trends Templates (cost: 50-60 tokens, unlockCost: 150-200 tokens)
+  // 50 Premium Viral Trends Templates (cost: 50-60 tokens, unlockCost: 300-400 tokens)
   const templates = [
     // TOP VIRAL TRENDS - Premium Collection
     {

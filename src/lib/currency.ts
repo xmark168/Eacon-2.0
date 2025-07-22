@@ -20,13 +20,13 @@ export function formatUSD(amount: number): string {
 }
 
 export function getTokensForUSD(usdAmount: number): number {
-  // 200 tokens = $1 USD
+  // 400 tokens = $1 USD
   return Math.floor(usdAmount * 200);
 }
 
 export function getUSDForTokens(tokens: number): number {
-  // 200 tokens = $1 USD
-  return Math.round((tokens / 200) * 100) / 100;
+  // 400 tokens = $1 USD
+  return Math.round((tokens / 400) * 100) / 100;
 }
 
 export function formatCurrencyDisplay(usdAmount: number) {

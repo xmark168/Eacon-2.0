@@ -9,30 +9,30 @@ const PACKAGES = [
   {
     id: 'creator',
     name: 'Creator',
-    tokens: 2000,
+    tokens: 3600,
     price: 9,
-    priceVND: 234450, // 9 USD * 26050 VND
+    priceVND: 234000, // 9 USD * 26,000 VND
     popular: false,
     features: [
-      '2,000 tokens monthly',
-      '~67 images per month',
-      'Basic templates',
-      'Standard support',
+      '3,600 tokens hàng tháng',
+      '~120 ảnh/tháng',
+      'Mẫu cơ bản',
+      'Hỗ trợ tiêu chuẩn',
     ],
   },
   {
     id: 'pro',
     name: 'Pro',
-    tokens: 8000,
+    tokens: 9600,
     price: 24,
-    priceVND: 625200, // 24 USD * 26050 VND
+    priceVND: 624000, // 24 USD * 26,000 VND
     popular: true,
     features: [
-      '8,000 tokens monthly',
-      '~280 images per month',
-      'Premium templates',
-      'Priority support',
-      'Advanced editing tools',
+      '9,600 tokens hàng tháng',
+      '~320 ảnh/tháng',
+      'Mẫu cao cấp',
+      'Hỗ trợ ưu tiên',
+      'Công cụ chỉnh sửa nâng cao',
     ],
   },
   {
@@ -40,13 +40,13 @@ const PACKAGES = [
     name: 'Custom Amount',
     tokens: 0, // Will be calculated
     price: 1, // Minimum
-    priceVND: 26050, // Minimum 1 USD * 26050 VND
+    priceVND: 26000, // Minimum 1 USD * 26,000 VND
     popular: false,
     features: [
-      'Choose your own amount',
-      'Minimum $1 USD',
-      'Instant delivery',
-      'No expiration',
+      'Chọn số lượng tuỳ ý',
+      'Tối thiểu $1 USD',
+      'Nhận token ngay',
+      'Không giới hạn thời gian',
     ],
   },
 ];
@@ -104,8 +104,8 @@ export default function PaymentPage() {
   const handleCustomPayment = async () => {
     if (!session) return;
 
-    const customTokens = Math.floor(customAmount * 200);
-    const customPriceVND = customAmount * 26050;
+    const customTokens = Math.floor(customAmount * 400);
+    const customPriceVND = customAmount * 26000;
 
     setIsLoading(true);
 
@@ -330,13 +330,13 @@ export default function PaymentPage() {
 
                 <div className="bg-gray-50 rounded-lg p-4 text-center">
                   <div className="text-lg font-semibold text-gray-900">
-                    = {Math.floor(customAmount * 200).toLocaleString()} tokens
+                    = {Math.floor(customAmount * 400).toLocaleString()} tokens
                   </div>
                   <div className="text-sm text-gray-600">
-                    ≈ {(customAmount * 26050).toLocaleString('vi-VN')} VNĐ
+                    ≈ {(customAmount * 26000).toLocaleString('vi-VN')} VNĐ
                   </div>
                   <div className="text-xs text-gray-500 mt-1">
-                    ~{Math.floor(Math.floor(customAmount * 200) / 30)} images
+                    ~{Math.floor(Math.floor(customAmount * 400) / 30)} ảnh
                   </div>
                 </div>
 
